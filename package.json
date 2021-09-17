@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Куплю.Продам",
   "main": "./src/service/service.js",
+  "type": "module",
   "scripts": {
     "start": "node ./src/service/service.js",
     "test": "npm run eslint",
@@ -21,5 +22,8 @@
   "devDependencies": {
     "eslint": "7.32.0",
     "eslint-config-htmlacademy": "0.6.0"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2"
   }
 }
