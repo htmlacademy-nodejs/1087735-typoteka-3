@@ -119,7 +119,7 @@ export const generate = {
 
     const content = JSON.stringify(generateOffers(countOffer));
 
-    fs.writeFile(path.resolve(process.cwd(), "mock.js"), content, (err) => {
+    fs.writeFile(path.resolve(process.cwd(), "mock.json"), content, (err) => {
       if (err) process.exit(ExitCode.error);
       process.exit(ExitCode.success);
     });
