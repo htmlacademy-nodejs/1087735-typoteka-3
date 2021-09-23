@@ -1,5 +1,6 @@
 "use strict";
 
+import chalk from "chalk";
 import fs from "fs";
 import path from "path";
 
@@ -10,13 +11,13 @@ const getVersion = () => {
     const parsedJson = JSON.parse(packageJsonFile);
     return parsedJson.version;
   } catch (error) {
-    console.error(error);
+    chalk.red(console.error(error));
   }
 };
 
 export const version = {
   name: "--version",
   run() {
-    console.info(getVersion());
+    console.info(chalk.blue(getVersion()));
   },
 };

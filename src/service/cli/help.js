@@ -4,7 +4,7 @@ import chalk from "chalk";
 
 const getMessage = () =>
   console.info(
-    `Программа запускает ${chalk.blue(
+    `${chalk.gray(`Программа запускает ${chalk.blue(
       "http"
     )}-сервер и формирует файл с данными для API.
   
@@ -13,7 +13,7 @@ const getMessage = () =>
           Команды:
           --version: выводит номер версии
           --help: печатает этот текст
-          --generate <count> формирует файл mocks.json`
+          --generate <count> формирует файл mocks.json`)}`
   );
 
 export const help = {
