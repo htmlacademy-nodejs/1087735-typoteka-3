@@ -11,7 +11,7 @@ const getVersion = () => {
     const parsedJson = JSON.parse(packageJsonFile);
     return parsedJson.version;
   } catch (error) {
-    chalk.red(console.error(error));
+    console.error(chalk.red(error));
   }
 };
 

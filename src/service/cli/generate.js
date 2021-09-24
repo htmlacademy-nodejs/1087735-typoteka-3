@@ -121,16 +121,16 @@ export const generate = {
 
     try {
       await writeFile(path.resolve(process.cwd(), "mock.json"), content);
-      chalk.green(
-        console.log(
-          chalk.green(
-            "Данные успешно сгенерированы и записаны в файл mock.json"
-          )
-        )
+      console.log(
+        chalk.green("Данные успешно сгенерированы и записаны в файл mock.json")
       );
       process.exit(ExitCode.success);
     } catch (error) {
-      console.log(chalk.red("При генерации данных произошла ошибка, попробуйте повторить позже."))
+      console.log(
+        chalk.red(
+          "При генерации данных произошла ошибка, попробуйте повторить позже."
+        )
+      );
       process.exit(ExitCode.error);
     }
   },
