@@ -1,8 +1,9 @@
 "use strict";
 
-import fs from "fs";
+import { writeFile } from "fs/promises";
 import path from "path";
 
+import chalk from "chalk";
 import { utils } from "./utils.js";
 import { ExitCode } from "../constants.js";
 
@@ -114,14 +115,23 @@ const generateOffers = (count) => {
 
 export const generate = {
   name: "--generate",
-  run(count) {
+  async run(count) {
     const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
-
     const content = JSON.stringify(generateOffers(countOffer));
 
-    fs.writeFile(path.resolve(process.cwd(), "mock.json"), content, (err) => {
-      if (err) process.exit(ExitCode.error);
+    try {
+      await writeFile(path.resolve(process.cwd(), "mock.json"), content);
+      console.log(
+        chalk.green("Данные успешно сгенерированы и записаны в файл mock.json")
+      );
       process.exit(ExitCode.success);
-    });
+    } catch (error) {
+      console.log(
+        chalk.red(
+          "При генерации данных произошла ошибка, попробуйте повторить позже."
+        )
+      );
+      process.exit(ExitCode.error);
+    }
   },
 };
