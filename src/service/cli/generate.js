@@ -25,19 +25,19 @@ const readTxtFile = async (fileDirectory) => {
   }
 };
 
+const getFileContent = async (filePath) => {
+  const res = await readTxtFile(filePath);
+  return res.split("\r\n").map((item) => item.trim());
+};
+
 const getOffer = async () => {
   const { getRandomInt, shuffle } = utils;
   const { MIN: minCountAnnounce, MAX: maxCountAnnounce } = AnnounceRestrict;
 
-  const titles = await readTxtFile("data/titles.txt").then((titles) =>
-    titles.split("\r\n").map((item) => item.trim())
-  );
-  const categories = await readTxtFile("data/categories.txt").then(
-    (categories) => categories.split("\r\n").map((item) => item.trim())
-  );
-  const sentences = await readTxtFile("data/sentences.txt").then((sentences) =>
-    sentences.split("\r\n").map((item) => item.trim())
-  );
+  const titles = await getFileContent("data/titles.txt");
+  const categories = await getFileContent("data/categories.txt");
+  const sentences = await getFileContent("data/sentences.txt");
+
   const titlesCount = titles.length;
 
   const title = titles[getRandomInt(0, titlesCount)];
@@ -80,8 +80,7 @@ export const generate = {
   async run(count) {
     const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
 
-    const contentPromise = await Promise.allSettled(generateOffers(countOffer));
-    const content = await contentPromise;
+    const content = await Promise.allSettled(generateOffers(countOffer));
 
     const processedContent = JSON.stringify(
       content.map((contentItem) => {
