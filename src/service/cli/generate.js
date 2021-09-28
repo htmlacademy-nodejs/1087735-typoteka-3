@@ -27,7 +27,7 @@ const readTxtFile = async (fileDirectory) => {
 
 const getFileContent = async (filePath) => {
   const res = await readTxtFile(filePath);
-  return res.split("\r\n").map((item) => item.trim());
+  return res.split("\n").map((item) => item.trim());
 };
 
 const getOffer = async () => {
@@ -40,7 +40,7 @@ const getOffer = async () => {
 
   const titlesCount = titles.length;
 
-  const title = titles[getRandomInt(0, titlesCount)];
+  const title = titles[getRandomInt(1, titlesCount - 1)];
 
   const announce = shuffle(sentences).slice(
     0,
@@ -92,11 +92,11 @@ export const generate = {
 
     try {
       await writeFile(
-        path.resolve(process.cwd(), "mock.json"),
+        path.resolve(process.cwd(), "mocks.json"),
         processedContent
       );
       console.log(
-        chalk.green("Данные успешно сгенерированы и записаны в файл mock.json")
+        chalk.green("Данные успешно сгенерированы и записаны в файл mocks.json")
       );
       process.exit(ExitCode.success);
     } catch (error) {

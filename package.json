@@ -5,8 +5,7 @@
   "main": "./src/service/service.js",
   "type": "module",
   "scripts": {
-    "start": "node ./src/service/service.js",
-    "start.dev": "nodemon ./src/main.js",
+    "start": "nodemon ./src/service/service.js --server 3000",
     "test": "npm run eslint",
     "eslint": "eslint --ext .js src/"
   },
