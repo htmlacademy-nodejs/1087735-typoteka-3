@@ -6,3 +6,7 @@ export const ExitCode = {
   success: 0,
   error: 1,
 };
+export const HttpCode = {
+  OK: 200,
+  NOT_FOUND: 404,
+};
