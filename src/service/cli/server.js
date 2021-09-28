@@ -58,7 +58,7 @@ export const server = {
     http
       .createServer(onClientContent)
       .listen(port, () => {
-        console.info(chalk.gray(`Ожидаю соединений на ${port}...`));
+        console.info(chalk.gray(`Ожидаю соединений на localhost:${port}...`));
       })
       .on(`error`, ({ message }) => {
         console.error(chalk.red(`Ошибка при создании сервера: ${message}`));
