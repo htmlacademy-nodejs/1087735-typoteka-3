@@ -1,8 +1,8 @@
 import express from "express";
 
-const myRouter = express.Router();
+const myRoutes = express.Router();
 
-myRouter.get(`/`, (req, res) => res.send(`/my`));
-myRouter.get(`/comments`, (req, res) => res.send(`/my/comments`));
+myRoutes.get(`/`, (req, res) => res.send(`/my`));
+myRoutes.get(`/comments`, (req, res) => res.send(`/my/comments`));
 
-export default myRouter;
+export default myRoutes;
