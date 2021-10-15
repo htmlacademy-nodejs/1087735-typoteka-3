@@ -9,10 +9,6 @@ const DEFAULT_PORT = 8080;
 const server = express();
 
 server.use(`/`, mainRoutes);
-server.use(`/login`, mainRoutes);
-server.use(`/register`, mainRoutes);
-server.use(`/search`, mainRoutes);
-server.use(`/categories`, mainRoutes);
 server.use(`/my`, myRoutes);
 server.use(`/articles`, articlesRouter);
 
